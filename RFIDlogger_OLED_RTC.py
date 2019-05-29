@@ -12,7 +12,7 @@ reader = mfrc522.MFRC522(14, 13, 12, 0, 2)
 # initiate RC522 reader with the following pins: 
 # SCK pin 14 (D13), MOSI pin 13 (D11), MISO pin 12 (D12), RST pin 0 (D8), SDA/CS pin 2 (D9)
 
-deck = {(136,4,110,155,121):'Monica', (136,4,218,48,102):'Rachel', (136,4,124,155,107):'Ross', (136,4,123,155,108):'Chandler'}
+deck = {(136,4,110,155,121):'Monica', (136,4,218,48,102):'Rachel', (136,4,124,155,107):'Ross', (136,4,123,155,108):'Chandler', (136,4,212,203,147):'Phoebe', (136,4,212,214,142):'Joey'}
 #tuples are uids of the discarded bus tickets with RFID tags, with names marked on them for clocking in and out :)
 
 log = open('log.txt', "a+") #create a file
@@ -43,6 +43,7 @@ while True:
         display(card_id, scantime) #call the display function
         log = open('log.txt', 'a+') #append new entry to file
         new_entry = '{},{}-{:02d}-{:02d} {:02d}:{:02d}:{:02d}\r\n'.format(card_id, scantime[0], scantime[1], scantime[2], scantime[4], scantime[5], scantime[6])
+#save the name, and the scantime in pandas timestamp format
         log.write(new_entry)
         log.close()
     
