@@ -42,7 +42,7 @@ while True:
         scantime = ds.datetime() #get the current time from RTC
         display(card_id, scantime) #call the display function
         log = open('log.txt', 'a+') #append new entry to file
-        new_entry = '{},{:02d},{:02d},{:02d},{:02d},{:02d},{}\r\n'.format(scantime[0], scantime[1], scantime[2], scantime[4], scantime[5], scantime[6], card_id)
+        new_entry = '{},{}-{:02d}-{:02d} {:02d}:{:02d}:{:02d}\r\n'.format(card_id, scantime[0], scantime[1], scantime[2], scantime[4], scantime[5], scantime[6])
         log.write(new_entry)
         log.close()
     
